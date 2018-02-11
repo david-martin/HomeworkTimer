@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         timerTextView = findViewById(R.id.timerTextView);
 
-        // TODO: Bigger buttons
         Button timerButton = findViewById(R.id.timerButton);
         timerButton.setText("start");
         timerButton.setOnClickListener((view) -> {

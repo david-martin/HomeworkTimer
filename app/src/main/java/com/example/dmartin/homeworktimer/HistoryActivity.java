@@ -30,7 +30,6 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO: Why is the toolbar/title missing at the top of this screen?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
