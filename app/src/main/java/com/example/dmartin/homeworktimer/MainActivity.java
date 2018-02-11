@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             millis = millis % 1000;
             String previousValue = String.format("%02d:%02d:%03d", minutes, seconds, millis);
             timerPreviousView.setText(previousValue);
+            // TODO: Include created_at date (formatted) in previous value text.
             try {
                 createHistoryRecord(previousValue);
             } catch (CouchbaseLiteException e) {
