@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         timerTextView = findViewById(R.id.timerTextView);
 
+        // TODO: Bigger buttons
         Button timerButton = findViewById(R.id.timerButton);
         timerButton.setText("start");
         timerButton.setOnClickListener((view) -> {
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 stopwatch.stop();
                 timerHandler.removeCallbacks(timerRunnable);
                 timerButton.setText("resume");
+
             } else {
                 stopwatch.start();
                 timerHandler.postDelayed(timerRunnable, 0);
@@ -153,13 +155,5 @@ public class MainActivity extends AppCompatActivity {
         DatabaseOptions options = new DatabaseOptions();
         options.setCreate(true);
         database = manager.openDatabase("history", options);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        timerHandler.removeCallbacks(timerRunnable);
-        Button timerButton = findViewById(R.id.timerButton);
-        timerButton.setText("resume");
     }
 }

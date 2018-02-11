@@ -86,4 +86,6 @@ public class HistoryActivity extends AppCompatActivity {
         database = manager.openDatabase("history", options);
     }
 
+    // TODO: Is cleanup needed on destroy?
+
 }
