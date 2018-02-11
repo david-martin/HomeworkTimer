@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+    // TODO: What is an instrumented test? Do we need one?
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
