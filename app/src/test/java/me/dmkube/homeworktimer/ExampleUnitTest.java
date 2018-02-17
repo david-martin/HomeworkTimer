@@ -1,4 +1,4 @@
-package com.example.dmartin.homeworktimer;
+package me.dmkube.homeworktimer;
 
 import org.junit.Test;
 

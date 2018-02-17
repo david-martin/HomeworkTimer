@@ -1,5 +1,6 @@
-package com.example.dmartin.homeworktimer;
+package me.dmkube.homeworktimer;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -19,14 +20,19 @@ import com.couchbase.lite.QueryRow;
 import com.couchbase.lite.View;
 import com.couchbase.lite.android.AndroidContext;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends Activity {
 
     private Manager manager;
     private Database database;
+    private SimpleDateFormat historyFormat = new SimpleDateFormat("EEEE dd MMM yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,7 @@ public class HistoryActivity extends AppCompatActivity {
         }, "1.0");
         List<String> items = new ArrayList<>();
         Query query = viewItemsByDate.createQuery();
+
         QueryEnumerator queryResults = null;
         try {
             queryResults = query.run();
@@ -67,10 +74,18 @@ public class HistoryActivity extends AppCompatActivity {
         while (queryResults.hasNext()) {
             QueryRow row = queryResults.next();
             Document doc = row.getDocument();
-            // TODO: Nicer formatting of history rows
-            items.add(String.format(" %s - %s - %s", doc.getId(), doc.getProperty("text"), doc.getProperty("created_at")));
+            Date date;
+            try {
+                date = MainActivity.dateFormatter.parse((String) doc.getProperty("created_at"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                continue;
+            }
+
+            items.add(String.format(" %s - %s", historyFormat.format(date), doc.getProperty("text")));
         }
 
+        Collections.reverse(items);
         ListAdapter historyListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
 
         ListView historyListView = findViewById(R.id.historyListView);

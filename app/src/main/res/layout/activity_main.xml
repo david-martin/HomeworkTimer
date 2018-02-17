@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dmartin.homeworktimer.MainActivity">
+    tools:context="me.dmkube.homeworktimer.MainActivity">
 
     <TextView
         android:id="@+id/timerTextView"
@@ -13,18 +13,20 @@
         android:layout_marginBottom="150dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:background="@drawable/back"
+        android:fontFamily="monospace"
+        android:text="00:00"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textAppearance="@android:style/TextAppearance.Material"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerPreviousView"
-        tools:text="00:00:00" />
+        app:layout_constraintTop_toBottomOf="@+id/timerPreviousView" />
 
     <Button
         android:id="@+id/timerButton"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="128dp"
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
@@ -40,6 +42,7 @@
 
     <Button
         android:id="@+id/finishButton"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="128dp"
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
@@ -61,17 +64,19 @@
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="64dp"
-        android:background="@drawable/back"
+        android:fontFamily="monospace"
+        android:text="00:00"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textAppearance="@android:style/TextAppearance.Material"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/timerTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="00:00:00" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/historyButton"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -79,4 +84,29 @@
         android:text="History"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Previous Time"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/timerPreviousView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Current Time"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/timerTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

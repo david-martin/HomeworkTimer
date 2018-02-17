@@ -1,5 +1,6 @@
-package com.example.dmartin.homeworktimer;
+package me.dmkube.homeworktimer;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,13 +25,15 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private Manager manager;
     private Database database;
 
     private TextView timerTextView;
     private Stopwatch stopwatch = Stopwatch.createUnstarted();
+    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    public static final String TIMER_STRING = "%02d:%02d";
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             seconds = seconds % 60;
             millis = millis % 1000;
 
-            timerTextView.setText(String.format("%02d:%02d:%03d", minutes, seconds, millis));
+            timerTextView.setText(String.format(TIMER_STRING, minutes, seconds));
 
             timerHandler.postDelayed(this, 33);
         }
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             int minutes = seconds / 60;
             seconds = seconds % 60;
             millis = millis % 1000;
-            String previousValue = String.format("%02d:%02d:%03d", minutes, seconds, millis);
+            String previousValue = String.format(TIMER_STRING, minutes, seconds);
             timerPreviousView.setText(previousValue);
             // TODO: Include created_at date (formatted) in previous value text.
             try {
@@ -117,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             TextView timerTextView = findViewById(R.id.timerTextView);
-            timerTextView.setText(String.format("%02d:%02d:%03d", 0, 0, 0));
+            timerTextView.setText(String.format(TIMER_STRING, 0, 0));
 
             Button button = (Button) view;
             button.setEnabled(false);
@@ -125,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Document createHistoryRecord(String value) throws CouchbaseLiteException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
         UUID uuid = UUID.randomUUID();
         Calendar calendar = GregorianCalendar.getInstance();
         long currentTime = calendar.getTimeInMillis();

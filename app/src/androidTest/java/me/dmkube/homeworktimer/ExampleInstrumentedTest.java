@@ -1,4 +1,4 @@
-package com.example.dmartin.homeworktimer;
+package me.dmkube.homeworktimer;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.dmartin.homeworktimer", appContext.getPackageName());
+        assertEquals("me.dmkube.homeworktimer", appContext.getPackageName());
     }
 }
